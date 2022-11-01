@@ -14,6 +14,8 @@ namespace NoteTaking
     {
 
         DataTable table;
+        
+
         public Form1()
         {
             InitializeComponent();
