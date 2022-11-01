@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NoteTaking.SampleDatabaseDataSet1TableAdapters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +15,7 @@ namespace NoteTaking
     {
 
         DataTable table;
-        
+
 
         public Form1()
         {
@@ -33,14 +34,23 @@ namespace NoteTaking
 
         private void bttNew_Click(object sender, EventArgs e)
         {
+            numberID.Clear();
             txtTitle.Clear();
             txtMessage.Clear();
         }
 
         private void bttSave_Click(object sender, EventArgs e)
         {
-            table.Rows.Add(txtTitle.Text, txtMessage.Text);
+            table.Rows.Add(numberID.Text, txtTitle.Text, txtMessage.Text);
 
+            int id = int.Parse(numberID.Text);
+
+            NotesTableAdapter notes = new NotesTableAdapter();
+
+            notes.Insert(id, txtTitle.Text, txtMessage.Text);
+            //notes.Fill(this.SampleDatabaseDataSet1.notes);
+
+            numberID.Clear();
             txtTitle.Clear();
             txtMessage.Clear();
         }
@@ -51,8 +61,9 @@ namespace NoteTaking
 
             if(index > -1)
             {
-                txtTitle.Text = table.Rows[index].ItemArray[0].ToString();
-                txtMessage.Text = table.Rows[index].ItemArray[1].ToString();
+                numberID.Text = table.Rows[index].ItemArray[0].ToString();
+                txtTitle.Text = table.Rows[index].ItemArray[1].ToString();
+                txtMessage.Text = table.Rows[index].ItemArray[2].ToString();
             }
         }
 
@@ -66,13 +77,16 @@ namespace NoteTaking
         private void Form1_Load(object sender, EventArgs e)
         {
             table = new DataTable();
+            table.Columns.Add("ID", typeof(String));
             table.Columns.Add("Title", typeof(String));
             table.Columns.Add("Messages", typeof(String));
 
             dataGridView1.DataSource = table;
-
+            
             dataGridView1.Columns["Messages"].Visible = false;
-            dataGridView1.Columns["Title"].Width = 240;
+            dataGridView1.Columns["Title"].Width = 175;
         }
+
+
     }
 }

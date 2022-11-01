@@ -37,6 +37,7 @@
             this.bttSave = new System.Windows.Forms.Button();
             this.bttRead = new System.Windows.Forms.Button();
             this.bttDelete = new System.Windows.Forms.Button();
+            this.numberID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -129,11 +130,19 @@
             this.bttDelete.UseVisualStyleBackColor = true;
             this.bttDelete.Click += new System.EventHandler(this.bttDelete_Click);
             // 
+            // numberID
+            // 
+            this.numberID.Location = new System.Drawing.Point(329, 93);
+            this.numberID.Name = "numberID";
+            this.numberID.Size = new System.Drawing.Size(100, 20);
+            this.numberID.TabIndex = 9;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.numberID);
             this.Controls.Add(this.bttDelete);
             this.Controls.Add(this.bttRead);
             this.Controls.Add(this.bttSave);
@@ -163,6 +172,7 @@
         private System.Windows.Forms.Button bttSave;
         private System.Windows.Forms.Button bttRead;
         private System.Windows.Forms.Button bttDelete;
+        private System.Windows.Forms.TextBox numberID;
     }
 }
 
